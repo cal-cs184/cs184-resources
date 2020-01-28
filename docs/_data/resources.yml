@@ -104,7 +104,7 @@ resources:
     topics:
       - geometry__splines__cubic_hermite
       - geometry__splines__bezier
-  - name: Dorian's Discussion 3
+  - name: Dorian's Discussion 4
     link: https://docs.google.com/presentation/d/1GtyRZxCFEArUJ28QvEIBKJoI1WY6fkUSNAMhDg9PuX8/edit
     type: slides
     event: discussion
