@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+    <head></head>
+    <body>
+        {% for resource in site.data.resources.resources %}
+            <h3><a href="{{ resource.link }}">{{ resource.name }}</a></h3>
+            {% if resource.authors %}
+                <p>Author(s): {{ resource.authors | array_to_sentence_string: "and" }}</p>
+            {% endif %}
+            {% if resource.topics %}
+                <ul>
+                    {% for topic_key in resource.topics %}
+                        <li>{{ site.data.resources.topics[topic_key].name }}</li>
+                    {% endfor %}
+                </ul>
+            {% endif %}
+        {% endfor %}
+    </body>
+</html>
