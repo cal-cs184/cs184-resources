@@ -307,3 +307,13 @@ resources:
       - camera__light_field
       - color
       - image__processing
+  # Misc
+  - name: Images as Data
+    link: https://docs.google.com/document/d/13WlXBfjBfwyds3M7XSiIgy7JdFhLtmikkquNMbEB_-8/edit
+    type: document
+    event: n/a
+    authors:
+      - Dorian Chan
+    semester: sp19
+    topics:
+      - image__representation
