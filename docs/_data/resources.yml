@@ -424,7 +424,6 @@ resources:
       - Varsha Ramakrishnan
     semester: sp19
     topics:
-      - camera
       - camera__lenses
       - camera__light_field
   - name: Varsha's Discussion 12
