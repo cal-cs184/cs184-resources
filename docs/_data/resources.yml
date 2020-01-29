@@ -1,10 +1,15 @@
 topics:
-  signal__sampling:
-    name: Sampling, Aliasing & Antialiasing
+  # Math: Linear algebra, stats
   math__transforms:
     name: Transforms
+  math__stats:
+    name: Probability (Random Variables, Inversion Method, Rejection Sampling, Importance Sampling)
   math__monte_carlo_integration:
-    name: Monte Carlo Integration
+    name: Monte Carlo Integration (Importance-Sampled Monte Carlo)
+  # Signal processing
+  signal__sampling:
+    name: Sampling, Aliasing & Antialiasing (Nyquist Theorem)
+  # Geometry: Representations, processing
   geometry__mesh__halfedge:
     name: Half-Edge Data Structure
   geometry__mesh__processing:
@@ -12,45 +17,55 @@ topics:
   geometry__splines:
     name: Splines
   geometry__splines__cubic_hermite:
-    name: Cubic Hermite Splines (Cubic Hermite Polynomials)
+    name: Cubic Hermite Interpolation (Cubic Hermite Polynomials)
+  geometry__splines__catmull_rom:
+    name: Catmull-Rom Interpolation
   geometry__splines__bezier:
-    name: Bezier Curves (Surfaces, de Casteljau's Algorithm)
+    name: Bézier Curves (Surfaces, de Casteljau's Algorithm)
+  # Rendering: Pipeline, rasterization, texture mapping, etc.
   rendering:
     name: Rendering
+  rendering__pipeline:
+    name: Graphics Pipeline
   rendering__rasterization:
     name: Rasterization
   rendering__texture_mapping:
-    name: Texture Mapping
-  rendering__pipeline:
-    name: Graphics Pipeline
+    name: Texture Mapping (Mipmaps)
   rendering__ray_tracing:
-    name: Ray Tracing & Path Tracing
+    name: Ray Tracing & Path Tracing (Ray-Triangle Test, Möller–Trumbore Algorithm, Intersection Test with Axis-Aligned Box)
   rendering__ray_tracing__acceleration:
     name: Ray Tracing Acceleration Data Structure (Bounding Box, BVH)
+  rendering__global_illumination:
+    name: Global Illumination (Indirect Illumination)
   rendering__radiometry_photometry:
     name: Radiometry & Photometry
-  rendering__global_illumination:
-    name: Global Illumination
   rendering__material_modeling:
     name: Material Modeling
+  # Animation
   animation:
-    name: Animation
+    name: Animation (Keyframes, Forward & Inverse Kinematics)
+  # Simulation: Physically-based simulation
   simulation:
-    name: Simulation
+    name: Simulation (Explicit Euler Method)
+  # Cameras: Sensors, lenses, light-field
   camera__lenses:
     name: Camera & Lenses
   camera__sensors:
-    name: Image Sensors
-  camera__lightfield:
+    name: Image Sensors (SNR)
+  camera__light_field:
     name: Light Field
+  # Color theory
   color:
-    name: Color Theory
+    name: Color Theory (Color Spaces, Chromaticity Diagram)
+  # Images: Encoding, processing
   image__representation:
     name: Image Representation & Encoding
   image__processing:
     name: Digital Image Processing
+  # High performance computing: GPUs
   high_performance_computing:
     name: High Performance Computing
+  # AR/VR
   arvr:
     name: Augmented & Virtual Reality
 resources:
