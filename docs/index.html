@@ -2,16 +2,23 @@
 layout: default
 ---
 
-{% for resource in site.data.resources.resources %}
-    <h3><a href="{{ resource.link }}">{{ resource.name }}</a></h3>
-    {% if resource.authors %}
-        <p>Author(s): {{ resource.authors | array_to_sentence_string: "and" }}</p>
-    {% endif %}
-    {% if resource.topics %}
-        <ul>
-            {% for topic_key in resource.topics %}
-                <li>{{ site.data.resources.topics[topic_key].name }}</li>
-            {% endfor %}
-        </ul>
-    {% endif %}
-{% endfor %}
+<div class="wrapper">
+    <h2>CS184 Resources</h2>
+    <div class="resources">
+        {% for resource in site.data.resources.resources %}
+            <a class="resource" href="{{ resource.link }}" target="_blank">
+                <h3>{{ resource.name }}</h3>
+                {% if resource.authors %}
+                    <p>Author(s): {{ resource.authors | array_to_sentence_string: "and" }}</p>
+                {% endif %}
+                {% if resource.topics %}
+                    <ul class="resource-topics">
+                        {% for topic_key in resource.topics %}
+                            <li class="topic" data-topic="{{ topic_key }}">{{ site.data.resources.topics[topic_key].name }}</li>
+                        {% endfor %}
+                    </ul>
+                {% endif %}
+            </a>
+        {% endfor %}
+    </div>
+</div>
