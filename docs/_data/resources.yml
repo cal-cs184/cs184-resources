@@ -18,6 +18,11 @@ topics:
     name: Sampling, Aliasing & Antialiasing
     includes:
       - Nyquist Theorem
+  signal__spatial_frequency:
+    name: Spatial & Frequency Domain
+    includes:
+      - Fourier Transform
+      - Inverse Fourier Transform
   # Geometry: Representations, processing
   geometry__mesh__halfedge:
     name: Half-Edge Data Structure
@@ -453,3 +458,23 @@ resources:
     semester: sp19
     topics:
       - image__representation
+  # Seth's interactive demos
+  - name: Point in Triangle Test & Barycentric Coordinates
+    link: https://berkeley.mintkit.net/sp19-tutoring/courses/cs-184/demos/point-testing/
+    type: demo
+    event: n/a
+    authors:
+      - Seth Lu
+    semester: sp19
+    topics:
+      - rendering__rasterization
+      - rendering__texture_mapping
+  - name: Image Spatial & Frequency Domain
+    link: https://berkeley.mintkit.net/sp19-tutoring/courses/cs-184/demos/image-fourier/
+    type: demo
+    event: n/a
+    authors:
+      - Seth Lu
+    semester: sp19
+    topics:
+      - signal__spatial_frequency
