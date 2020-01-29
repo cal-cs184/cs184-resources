@@ -253,7 +253,7 @@ resources:
       - camera__sensors
       - color
   - name: Jessie's Discussion 12
-    link: https://docs.google.com/presentation/d/1oSoYXHHirTcONdFvMs4csY3ncfTVSe10XvTYrsYkdlQ/edits
+    link: https://docs.google.com/presentation/d/1oSoYXHHirTcONdFvMs4csY3ncfTVSe10XvTYrsYkdlQ/edit
     type: slides
     event: discussion
     authors:
