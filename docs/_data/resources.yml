@@ -437,7 +437,7 @@ resources:
     topics:
       - rendering__radiometry_photometry
       - rendering__ray_tracing
-      - rendering__ray_tracing__acceleration
+      - rendering__global_illumination
       - rendering__material_modeling
       - camera__lenses
       - camera__light_field
