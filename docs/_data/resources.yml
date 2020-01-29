@@ -152,3 +152,120 @@ resources:
       - simulation
       - camera__sensors
       - color
+  # Jessie's discussion slides from sp19
+  - name: Jessie's Discussion 1
+    link: https://docs.google.com/presentation/d/1dNMNcNkm4VnRzgjkIGmAHpTNAFllL7e4vH9T7g4F6SQ/edit
+    type: slides
+    event: discussion
+    authors:
+      - Jessie Yang
+    semester: sp19
+    topics:
+      - image__representation
+  - name: Jessie's Discussion 2
+    link: https://docs.google.com/presentation/d/1nMSX4Uwa3ky187Np7nnHaZ-THi_Aj4NxBkJTz1At1FA/edit
+    type: slides
+    event: discussion
+    authors:
+      - Jessie Yang
+    semester: sp19
+    topics:
+      - signal__sampling
+      - math__transforms
+      - rendering__texture_mapping
+  - name: Jessie's Discussion 3
+    link: https://docs.google.com/presentation/d/1CcPnjN30_Jl1isPqee_rn3-s0ZygsUd4hCJLoSR3M_g/edit
+    type: slides
+    event: discussion
+    authors:
+      - Jessie Yang
+    semester: sp19
+    topics:
+      - geometry__splines__cubic_hermite
+      - geometry__splines__catmull_rom
+      - geometry__splines__bezier
+  - name: Jessie's Discussion 4
+    link: https://docs.google.com/presentation/d/1bNXMDIH-AcVw1xFbdzcCNldLnooc9Q3FVIZLoQ86iO0/edit
+    type: slides
+    event: discussion
+    authors:
+      - Jessie Yang
+    semester: sp19
+    topics:
+      - geometry__mesh__halfedge
+      - geometry__mesh__processing
+      - rendering__ray_tracing
+  - name: Jessie's Discussion 5
+    link: https://docs.google.com/presentation/d/1utHjLlYCh1GmGZPubiY3xOJ9oFPlfMfe_e7HzazKnZ8/edit
+    type: slides
+    event: discussion
+    authors:
+      - Jessie Yang
+    semester: sp19
+    topics:
+      - rendering__ray_tracing
+      - rendering__ray_tracing__acceleration
+      - rendering__radiometry_photometry
+  - name: Jessie's Discussion 6
+    link: https://docs.google.com/presentation/d/1i1_d2F63Wg-Nr1aKko25lzqKtfZ9xaGHU6LSND6ontM/edit
+    type: slides
+    event: discussion
+    authors:
+      - Jessie Yang
+    semester: sp19
+    topics:
+      - math__stats
+      - math__monte_carlo_integration
+  - name: Jessie's Discussion 7
+    link: https://docs.google.com/presentation/d/1tGsdzb9zPs1LR7V1tlCdKIJV7U_W_Zza7NEAiri1AVA/edit
+    type: slides
+    event: discussion
+    authors:
+      - Jessie Yang
+    semester: sp19
+    topics:
+      - rendering__ray_tracing
+      - rendering__global_illumination
+      - rendering__material_modeling
+  - name: Jessie's Discussion 8
+    link: https://docs.google.com/presentation/d/1xESepVO89nlVDFl1GyFCuW1kbMn-ilj1qXaXnaucyPY/edit
+    type: slides
+    event: discussion
+    authors:
+      - Jessie Yang
+    semester: sp19
+    topics:
+      - rendering__rasterization
+      - geometry__mesh__halfedge
+      - rendering__radiometry_photometry
+      - math__stats
+      - rendering__ray_tracing__acceleration
+  - name: Jessie's Discussion 11
+    link: https://docs.google.com/presentation/d/1fXGYtQU3okVg9ridIC7sB2axWIynSTaAeGh8D2GneP0/edit
+    type: slides
+    event: discussion
+    authors:
+      - Jessie Yang
+    semester: sp19
+    topics:
+      - animation
+      - simulation
+      - camera__sensors
+      - color
+  - name: Jessie's Discussion 12
+    link: https://docs.google.com/presentation/d/1oSoYXHHirTcONdFvMs4csY3ncfTVSe10XvTYrsYkdlQ/edits
+    type: slides
+    event: discussion
+    authors:
+      - Jessie Yang
+    semester: sp19
+    topics:
+      - rendering__radiometry_photometry
+      - rendering__ray_tracing
+      - rendering__global_illumination
+      - rendering__material_modeling
+      - camera__lenses
+      - camera__sensors
+      - camera__light_field
+      - color
+      - image__processing
