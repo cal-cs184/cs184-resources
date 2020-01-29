@@ -101,7 +101,7 @@ topics:
   image__processing:
     name: Digital Image Processing
   # High performance computing: GPUs
-  high_performance_computing:
+  hpc:
     name: High Performance Computing
   # AR/VR
   arvr:
