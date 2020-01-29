@@ -23,6 +23,10 @@ topics:
     name: Half-Edge Data Structure
   geometry__mesh__processing:
     name: Mesh Processing
+  geometry__mesh__processing__loop_subdivision:
+    name: Loop Subdivision
+  geometry__mesh__processing__catmull_clark:
+    name: Catmull-Clark Subdivision (Quad Mesh)
   geometry__splines:
     name: Splines
   geometry__splines__cubic_hermite:
@@ -46,6 +50,7 @@ topics:
   rendering__texture_mapping:
     name: Texture Mapping
     includes:
+      - Barycentric Coordinates
       - Mipmaps
   rendering__ray_tracing:
     name: Ray Tracing & Path Tracing
@@ -81,12 +86,20 @@ topics:
   # Cameras: Sensors, lenses, light-field
   camera__lenses:
     name: Camera & Lenses
+    includes:
+      - Exposure
+      - Aperture (F-Stop)
+      - ISO
+      - Circle of Confusion
   camera__sensors:
     name: Image Sensors
     includes:
       - Signal-to-Noise Ratio (SNR)
   camera__light_field:
     name: Light Field
+    includes:
+      - Light Field Parameterization
+      - Computational Refocusing
   # Color theory
   color:
     name: Color Theory
@@ -166,7 +179,8 @@ resources:
     semester: sp19
     topics:
       - geometry__mesh__halfedge
-      - geometry__mesh__processing
+      - geometry__mesh__processing__loop_subdivision
+      - geometry__mesh__processing__catmull_clark
       - rendering__ray_tracing
   - name: Dorian's Discussion 5
     link: https://docs.google.com/presentation/d/1f8zaPzSAIVM-CcNG37qSZA4boHA_dqONHRb6lck2Cb4/edit
@@ -231,7 +245,8 @@ resources:
     semester: sp19
     topics:
       - geometry__mesh__halfedge
-      - geometry__mesh__processing
+      - geometry__mesh__processing__loop_subdivision
+      - geometry__mesh__processing__catmull_clark
       - rendering__ray_tracing
   - name: Jessie's Discussion 5
     link: https://docs.google.com/presentation/d/1utHjLlYCh1GmGZPubiY3xOJ9oFPlfMfe_e7HzazKnZ8/edit
@@ -265,7 +280,8 @@ resources:
       - rendering__ray_tracing
       - rendering__global_illumination
       - rendering__material_modeling
-  - name: Jessie's Discussion 8
+      - math__transforms
+  - name: Jessie's Discussion 9
     link: https://docs.google.com/presentation/d/1xESepVO89nlVDFl1GyFCuW1kbMn-ilj1qXaXnaucyPY/edit
     type: slides
     event: discussion
@@ -306,7 +322,128 @@ resources:
       - camera__sensors
       - camera__light_field
       - color
-      - image__processing
+      - image__representation
+  # Varsha's discussion slides from sp19
+  - name: Varsha's Discussion 2
+    link: https://docs.google.com/presentation/d/1t4NAEwJXtlg_kKN5JTiKcGAn62Z1kRv52t8WlR3uMV4/edit
+    type: slides
+    event: discussion
+    authors:
+      - Varsha Ramakrishnan
+    semester: sp19
+    topics:
+      - signal__sampling
+      - math__transforms
+      - rendering__texture_mapping
+  - name: Varsha's Discussion 3
+    link: https://docs.google.com/presentation/d/1aF9vgveXZhwO8xblyFuJ6EIajS_CMQMdgbJimUemxc4/edit
+    type: slides
+    event: discussion
+    authors:
+      - Varsha Ramakrishnan
+    semester: sp19
+    topics:
+      - geometry__splines__cubic_hermite
+      - geometry__splines__bezier
+  - name: Varsha's Discussion 4
+    link: https://docs.google.com/presentation/d/1JTHHHcgdKQieQ8VCmaDMcH1WbQHFOmE9LQhK6qVAMyA/edit
+    type: slides
+    event: discussion
+    authors:
+      - Varsha Ramakrishnan
+    semester: sp19
+    topics:
+      - geometry__mesh__halfedge
+      - geometry__mesh__processing__loop_subdivision
+      - geometry__mesh__processing__catmull_clark
+      - rendering__ray_tracing
+  - name: Varsha's Discussion 5
+    link: https://docs.google.com/presentation/d/199fehwHVvIUu0JbNDw1tqeT27F9HrpHBgOarIFCa_nE/edit
+    type: slides
+    event: discussion
+    authors:
+      - Varsha Ramakrishnan
+    semester: sp19
+    topics:
+      - rendering__ray_tracing
+      - rendering__ray_tracing__acceleration
+      - rendering__radiometry_photometry
+  - name: Varsha's Discussion 6
+    link: https://docs.google.com/presentation/d/1Xutej03XtUaPAKXSaVK-uPD3LgnGiPmABph1loXSULY/edit
+    type: slides
+    event: discussion
+    authors:
+      - Varsha Ramakrishnan
+    semester: sp19
+    topics:
+      - math__monte_carlo_integration
+      - math__stats
+  - name: Varsha's Discussion 7
+    link: https://docs.google.com/presentation/d/1O_FVBQ7ffPN4dpFq_QdbL8cN-R0yaWxoX4xMErOIr8I/edit
+    type: slides
+    event: discussion
+    authors:
+      - Varsha Ramakrishnan
+    semester: sp19
+    topics:
+      - rendering__global_illumination
+      - rendering__material_modeling
+      - rendering__ray_tracing
+      - math__transforms
+  - name: Varsha's Discussion 9
+    link: https://docs.google.com/presentation/d/1sWAEAp6iBcWE4Z6Y0sNCr-0naPe9YVahwHPkUoGRgSQ/edit
+    type: slides
+    event: discussion
+    authors:
+      - Varsha Ramakrishnan
+    semester: sp19
+    topics:
+      - rendering__rasterization
+      - geometry__splines__bezier
+      - geometry__mesh__halfedge
+      - rendering__radiometry_photometry
+      - math__stats
+      - rendering__ray_tracing__acceleration
+  - name: Varsha's Discussion 10
+    link: https://docs.google.com/presentation/d/1Ji0_zueX2skLvNg7MZ9fXg5TG4bX0ywrFsbkLFFZGpE/edit
+    type: slides
+    event: discussion
+    authors:
+      - Varsha Ramakrishnan
+    semester: sp19
+    topics:
+      - animation
+      - simulation
+      - camera__sensors
+      - color
+  - name: Varsha's Discussion 11
+    link: https://docs.google.com/presentation/d/16Dc8Gn-Sc55sxm8CGEG-soXI58JjZqpeX5M2JwuHlxk/edit
+    type: slides
+    event: discussion
+    authors:
+      - Varsha Ramakrishnan
+    semester: sp19
+    topics:
+      - camera
+      - camera__lenses
+      - camera__light_field
+  - name: Varsha's Discussion 12
+    link: https://docs.google.com/presentation/d/1KIuA7TInmoXS-wlhb3NppnXj0sqAgaLoPk0fhO1AraE/edit
+    type: slides
+    event: discussion
+    authors:
+      - Varsha Ramakrishnan
+    semester: sp19
+    topics:
+      - rendering__radiometry_photometry
+      - rendering__ray_tracing
+      - rendering__ray_tracing__acceleration
+      - rendering__material_modeling
+      - camera__lenses
+      - camera__light_field
+      - camera__sensors
+      - color
+      - image__representation
   # Misc
   - name: Images as Data
     link: https://docs.google.com/document/d/13WlXBfjBfwyds3M7XSiIgy7JdFhLtmikkquNMbEB_-8/edit
