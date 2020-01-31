@@ -142,7 +142,7 @@ a {
     top: 0;
     right: 0;
     left: 0;
-    max-height: 40vh;
+    max-height: 30vh;
     display: block;
     overflow-x: visible;
     overflow-y: auto;
@@ -168,7 +168,7 @@ a {
 
         @each $topic, $val in $topics {
             &[data-topic^="#{$topic}"].selected,
-            &[data-topic^="#{$topic}"]:hover {
+            &[data-topic^="#{$topic}"].focused {
                 border-color: change-color(map-get($val, color), $lightness: 60%);
                 background-color: change-color(map-get($val, color), $lightness: 95%);
             }

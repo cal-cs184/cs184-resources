@@ -67,13 +67,17 @@ layout: default
         const searchInputElem = document.getElementById("search-input");
         const searchInputTopicsContainerElem = document.getElementById("search-input-topics");
         
-        const searchTopicsContaineerElem = document.getElementById("search-topics");
+        const searchTopicsContainerElem = document.getElementById("search-topics");
         
         const resourcesContainerElem = document.getElementById("resources");
 
         const selectedTopics = new Set();
         let queryWords = null;
 
+        /**
+         * Refresh resources to show only the matched entries
+         * Mark "matched" on resources
+         */
         function refreshResources() {
             const allMatched = selectedTopics.size == 0; // If no topic is selected, then show all resources
             let someContainsSelectedTopics = false;
@@ -93,6 +97,9 @@ layout: default
             resourcesContainerElem.classList.toggle("none-matched", !someContainsSelectedTopics);
         }
 
+        /**
+         * Mark "selected" on topics in the container elem
+         */
         function refreshTopicElems(topicsContainerElem) {
             let anySelected = false;
             for (let topicElem of topicsContainerElem.children) {
@@ -103,33 +110,21 @@ layout: default
             topicsContainerElem.classList.toggle("none-selected", !anySelected);
         }
 
-        function topicElemOnClick() {
-            const key = this.dataset.topic;
-            if (selectedTopics.has(key)) {
-                // From input topics list or search topics list
-                selectedTopics.delete(key);
-                refreshTopicElems(searchInputTopicsContainerElem);
-                refreshTopicElems(searchTopicsContaineerElem);
-            } else {
-                // Can only be from input topics list
-                selectedTopics.add(key);
-                refreshTopicElems(searchInputTopicsContainerElem);
-                refreshTopicElems(searchTopicsContaineerElem);
-
-                searchInputElem.value = "";
-                searchInputElemOnInput.apply(searchInputElem); // Simulate input
-            }
-
-            refreshResources();
-        }
-
         function searchInputElemOnFocus() {
             searchInputBoxElem.classList.toggle("active", true);
+
             searchInputElemOnInput.apply(searchInputElem); // Simulate input
         }
 
         function searchInputElemOnBlur() {
             searchInputBoxElem.classList.toggle("active", false);
+
+            // Remove any focus
+            if (searchFocusElem) {
+                searchFocusElem.classList.remove("focused");
+                searchInputTopicsContainerElem.scrollTop = 0;
+                searchFocusElem = null;
+            }
         }
 
         function searchInputElemOnInput() {
@@ -171,22 +166,128 @@ layout: default
             }
             searchInputTopicsContainerElem.classList.toggle("none-matched", !someMatched);
 
+            // Remove any focus
+            if (searchFocusElem) {
+                searchFocusElem.classList.remove("focused");
+                searchInputTopicsContainerElem.scrollTop = 0;
+                searchFocusElem = null;
+            }
+
+        }
+
+        let searchFocusElem = null;
+
+        function searchInputElemOnKeydown(event) {
+            switch (event.key) {
+                case "ArrowDown": {
+                    event.preventDefault();
+                    const prevSearchFocusElem = searchFocusElem;
+                    if (!searchFocusElem) {
+                        // Not focused on anything yet
+                        searchFocusElem = searchInputTopicsContainerElem.firstElementChild;
+                    } else {
+                        // Focused on something already
+                        searchFocusElem = searchFocusElem.nextElementSibling;
+                    }
+                    while (searchFocusElem && !searchFocusElem.classList.contains("matched")) {
+                        searchFocusElem = searchFocusElem.nextElementSibling;
+                    }
+                    if (!searchFocusElem) {
+                        // Ran out of options
+                        // Don't do anything
+                        searchFocusElem = prevSearchFocusElem;
+                    } else {
+                        // Found new element to focus on
+                        if (prevSearchFocusElem) prevSearchFocusElem.classList.remove("focused");
+                        searchFocusElem.classList.add("focused");
+                        searchInputTopicsContainerElem.scrollTop = Math.max(
+                            searchInputTopicsContainerElem.scrollTop, 
+                            searchFocusElem.offsetTop - searchInputTopicsContainerElem.offsetHeight + searchFocusElem.offsetHeight + 16 * 1.5);
+                    }
+                    break;
+                }
+                case "ArrowUp": {
+                    event.preventDefault();
+                    const prevSearchFocusElem = searchFocusElem;
+                    if (!searchFocusElem) {
+                        // Not focused on anything yet
+                        searchFocusElem = null; // Do not try anything
+                    } else {
+                        // Focused on something already
+                        searchFocusElem = searchFocusElem.previousElementSibling;
+                    }
+                    while (searchFocusElem && !searchFocusElem.classList.contains("matched")) {
+                        searchFocusElem = searchFocusElem.previousElementSibling;
+                    }
+                    if (!searchFocusElem) {
+                        // Ran out of options
+                        // Remove focus and "focus" on search box (which doesn't really have a focus)
+                        if (prevSearchFocusElem) prevSearchFocusElem.classList.remove("focused");
+                    } else {
+                        // Found new element to focus on
+                        if (prevSearchFocusElem) prevSearchFocusElem.classList.remove("focused");
+                        searchFocusElem.classList.add("focused");
+                        searchInputTopicsContainerElem.scrollTop = Math.min(searchInputTopicsContainerElem.scrollTop, searchFocusElem.offsetTop - 16 * 4.5);
+                    }
+                    break;
+                }
+                case "Enter": {
+                    if (searchFocusElem) {
+                        topicElemOnClick.apply(searchFocusElem); // Simulate click
+
+                        searchInputElem.value = "";
+                        searchInputElemOnInput.apply(searchInputElem); // Simulate input
+                    }
+                    break;
+                }
+            }
+        }
+
+        function topicElemOnClick() {
+            const key = this.dataset.topic;
+            if (selectedTopics.has(key)) {
+                // From input topics list or search topics list
+                selectedTopics.delete(key);
+                refreshTopicElems(searchInputTopicsContainerElem);
+                refreshTopicElems(searchTopicsContainerElem);
+            } else {
+                // Can only be from input topics list
+                selectedTopics.add(key);
+                refreshTopicElems(searchInputTopicsContainerElem);
+                refreshTopicElems(searchTopicsContainerElem);
+
+                searchInputElem.value = "";
+                searchInputElemOnInput.apply(searchInputElem); // Simulate input
+            }
+
+            refreshResources();
+        }
+
+        function inputTopicElemOnMouseEnter() {
+            const prevSearchFocusElem = searchFocusElem;
+            searchFocusElem = this;
+            if (searchFocusElem != prevSearchFocusElem) {
+                if (prevSearchFocusElem) prevSearchFocusElem.classList.remove("focused");
+                searchFocusElem.classList.add("focused");
+            }
         }
 
         // Attach event listeners
 
         searchInputElem.addEventListener("input", searchInputElemOnInput);
+        searchInputElem.addEventListener("keydown", searchInputElemOnKeydown);
         searchInputElem.addEventListener("focus", searchInputElemOnFocus);
         searchInputElem.addEventListener("blur", searchInputElemOnBlur);
         for (let topicElem of searchInputTopicsContainerElem.children) {
             topicElem.addEventListener("mousedown", topicElemOnClick);
+            topicElem.addEventListener("mouseenter", inputTopicElemOnMouseEnter);
         }
-        for (let topicElem of searchTopicsContaineerElem.children) {
+        for (let topicElem of searchTopicsContainerElem.children) {
             topicElem.addEventListener("mousedown", topicElemOnClick);
         }
 
         refreshTopicElems(searchInputTopicsContainerElem);
-        refreshTopicElems(searchTopicsContaineerElem);
+        refreshTopicElems(searchTopicsContainerElem);
         refreshResources();
 
     });
