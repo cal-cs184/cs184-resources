@@ -31,6 +31,9 @@ for (let resource of data.resources) {
         if (!data.topics[topic]) {
             console.log(`resources[${resource_idx}].topics[${topic_idx}] "${topic}" not defined in topics list`);
             num_bad_topics++;
+        } else if (data.topics[topic].pass) {
+            console.log(`resources[${resource_idx}].topics[${topic_idx}] "${topic}" not allowed to be listed (please set topic pass: true)`)
+            num_bad_topics++;
         }
         topic_idx++;
     }
