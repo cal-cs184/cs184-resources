@@ -131,8 +131,10 @@ a {
     outline: none;
     border-radius: 1.5em;
 
+    transition: box-shadow ease 0.15s;
+    box-shadow: 0 10px 10px -10px rgba(0, 0, 0, 0.0);
     #search-inputbox.active & {
-        box-shadow: 0 20px 20px -20px rgba(0, 0, 0, 0.16);
+        box-shadow: 0 10px 10px -10px rgba(0, 0, 0, 0.08);
     }
 }
 
@@ -152,10 +154,12 @@ a {
     border: 1px solid $color-border;
     border-radius: 1.5em;
     background-color: white;
-    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
+    box-shadow: 0 5px 30px rgba(0, 0, 0, 0.08);
 
+    transition: opacity ease 0.15s;
     #search-inputbox:not(.active) & {
-        display: none;
+        opacity: 0;
+        pointer-events: none;
     }
 
     > .topic {
