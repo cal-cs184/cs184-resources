@@ -4,7 +4,22 @@ layout: default
 
 <div class="wrapper">
     <h2>CS184 Resources</h2>
-    <div class="resources">
+    <div class="search">
+        <input type="text" id="search-input" autocapitalize="off" autocomplete="off" placeholder="Search Topics...">
+        <ul id="search-topics" class="topics">
+            {% for topic in site.data.resources.topics %}
+                <li class="topic" data-topic="{{ topic[0] }}">
+                    <div>{{ topic[1].name }}</div>
+                    {% if topic[1].includes %}
+                        <div class="includes">
+                            {{ topic[1].includes | array_to_sentence_string: "and" }}
+                        </div>
+                    {% endif %}
+                </li>
+            {% endfor %}
+        </ul>
+    </div>
+    <div id="resources" class="resources">
         {% for resource in site.data.resources.resources %}
             <a class="resource" href="{{ resource.link }}" target="_blank">
                 <h3>{{ resource.name }}</h3>
@@ -12,7 +27,7 @@ layout: default
                     <p>Author(s): {{ resource.authors | array_to_sentence_string: "and" }}</p>
                 {% endif %}
                 {% if resource.topics %}
-                    <ul class="resource-topics">
+                    <ul class="topics">
                         {% for topic_key in resource.topics %}
                             <li class="topic" data-topic="{{ topic_key }}">{{ site.data.resources.topics[topic_key].name }}</li>
                         {% endfor %}
@@ -22,3 +37,114 @@ layout: default
         {% endfor %}
     </div>
 </div>
+<script type="text/javascript">
+
+    window.addEventListener("DOMContentLoaded", function () {
+
+        const topics = JSON.parse(decodeURIComponent("{{ site.data.resources.topics | jsonify | uri_escape  }}"));
+
+        const searchInputElem = document.getElementById("search-input");
+        const searchTopicsContainerElem = document.getElementById("search-topics");
+        const resourcesContainerElem = document.getElementById("resources");
+
+        const selectedTopics = new Set();
+        let queryWords = null;
+
+        function refreshResources() {
+            const allMatched = selectedTopics.size == 0; // If no topic is selected, then show all resources
+            for (let resourceElem of resourcesContainerElem.children) {
+                let containsSelectedTopics = allMatched;
+
+                for (let topicElem of resourceElem.getElementsByClassName("topic")) {
+                    const topicMatched = allMatched || selectedTopics.has(topicElem.dataset.topic);
+                    topicElem.classList.toggle("matched", topicMatched);
+                    containsSelectedTopics |= topicMatched;
+                }
+                resourceElem.classList.toggle("matched", containsSelectedTopics);
+            }
+        }
+
+        function topicElemOnClick() {
+            const key = this.dataset.topic;
+            if (selectedTopics.has(key)) {
+                selectedTopics.delete(key);
+                this.classList.toggle("selected", false);
+            } else {
+                selectedTopics.add(key);
+                this.classList.toggle("selected", true);
+                searchInputElem.value = "";
+                searchInputElemOnInput.apply(searchInputElem); // Manual trigger
+            }
+
+            refreshResources();
+        }
+
+        function searchInputElemOnFocus() {
+            if (!queryWords) {
+                for (let topicElem of searchTopicsContainerElem.children) {
+                    topicElem.classList.toggle("matched", true);
+                }
+                searchTopicsContainerElem.classList.toggle("mode-search", true);
+            }
+        }
+
+        function searchInputElemOnBlur() {
+            if (!queryWords) {
+                searchTopicsContainerElem.classList.toggle("mode-search", false);
+                for (let topicElem of searchTopicsContainerElem.children) {
+                    topicElem.classList.toggle("matched", false);
+                }
+            }
+        }
+
+        function searchInputElemOnInput() {
+
+            // Figure out the potential topics
+
+            const potentialTopics = new Set();
+
+            const query = this.value;
+            queryWords = query.match(/[a-z]{3,}/gi);
+            if (queryWords) {
+                const queryWordRegExps = queryWords.map(word => new RegExp(word, "i"));
+                for (let [key, topic] of Object.entries(topics)) {
+                    const wordFound = queryWordRegExps.some(word => topic.name.match(word) || key.match(word));
+                    if (wordFound) {
+                        // Word found in topic name/key
+                        potentialTopics.add(key);
+                    } else if (topic.includes) {
+                        for (let sub of topic.includes) {
+                            const wordFound = queryWordRegExps.some(word => sub.match(word));
+                            if (wordFound) {
+                                // Word found in included topics
+                                potentialTopics.add(key);
+                                break;
+                            }
+                        }
+                    }
+                }
+            }
+
+            // Show the filtered topics
+
+            const allMatched = !queryWords;
+            for (let topicElem of searchTopicsContainerElem.children) {
+                topicElem.classList.toggle("matched", allMatched || potentialTopics.has(topicElem.dataset.topic));
+            }
+
+        }
+
+        // Attach event listeners
+
+        searchInputElem.addEventListener("input", searchInputElemOnInput);
+        searchInputElem.addEventListener("focus", searchInputElemOnFocus);
+        searchInputElem.addEventListener("blur", searchInputElemOnBlur);
+        for (let topicElem of searchTopicsContainerElem.getElementsByClassName("topic")) {
+            topicElem.addEventListener("mousedown", topicElemOnClick);
+        }
+
+        refreshResources();
+
+    });
+
+</script>
