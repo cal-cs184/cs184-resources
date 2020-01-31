@@ -9,20 +9,33 @@ layout: default
             <input type="text" id="search-input" autocapitalize="off" autocomplete="off" placeholder="Search Topics...">
             <ul id="search-input-topics" class="topics">
                 {% for topic in site.data.resources.topics %}
-                    <li class="topic" data-topic="{{ topic[0] }}">
-                        <div>{{ topic[1].name }}</div>
-                        {% if topic[1].includes %}
-                            <div class="includes">
-                                {{ topic[1].includes | array_to_sentence_string: "and" }}
+                    {% if topic[1].pass != true %}
+                        <li class="topic" data-topic="{{ topic[0] }}">
+                            <div>
+                                {% assign key_parts = topic[0] | split: "__" %}
+                                {% assign key_base = "" %}
+                                {% for key_part in key_parts %}
+                                    {% assign partial_key = key_base | append: key_part %}
+                                    {{ site.data.resources.topics[partial_key].name }}
+                                    {% if forloop.last == false %} / {% endif %}
+                                    {% assign key_base = key_base | append: key_part | append: "__" %}
+                                {% endfor %}
                             </div>
-                        {% endif %}
-                    </li>
+                            {% if topic[1].includes %}
+                                <div class="includes">
+                                    {{ topic[1].includes | array_to_sentence_string: "and" }}
+                                </div>
+                            {% endif %}
+                        </li>
+                    {% endif %}
                 {% endfor %}
             </ul>
         </div>
         <ul id="search-topics" class="topics">
             {% for topic in site.data.resources.topics %}
-                <li class="topic" data-topic="{{ topic[0] }}">{{ topic[1].name }}</li>
+                {% if topic[1].pass != true %}
+                    <li class="topic" data-topic="{{ topic[0] }}">{{ topic[1].name }}</li>
+                {% endif %}
             {% endfor %}
         </ul>
     </div>

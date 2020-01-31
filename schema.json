@@ -18,6 +18,10 @@
               "items": {
                 "type": "string"
               }
+            },
+            "pass": {
+              "type": "boolean",
+              "description": "True if the topic does not allow resources to be listed under"
             }
           },
           "additionalProperties": false,

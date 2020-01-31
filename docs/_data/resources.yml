@@ -1,5 +1,8 @@
 topics:
   # Math: Linear algebra, stats
+  math:
+    name: Math
+    pass: true
   math__transforms:
     name: Transforms
   math__stats:
@@ -14,6 +17,9 @@ topics:
     includes:
       - Importance-Sampled Monte Carlo
   # Signal processing
+  signal:
+    name: Signal Processing
+    pass: true
   signal__sampling:
     name: Sampling, Aliasing & Antialiasing
     includes:
@@ -24,6 +30,12 @@ topics:
       - Fourier Transform
       - Inverse Fourier Transform
   # Geometry: Representations, processing
+  geometry:
+    name: Geometry
+    pass: true
+  geometry__mesh:
+    name: Mesh
+    pass: true
   geometry__mesh__halfedge:
     name: Half-Edge Data Structure
   geometry__mesh__processing:
@@ -64,7 +76,7 @@ topics:
       - Möller–Trumbore Algorithm
       - Intersection Test with Axis-Aligned Box
   rendering__ray_tracing__acceleration:
-    name: Ray Tracing Acceleration Data Structure
+    name: Acceleration Data Structure
     includes:
       - Bounding Box
       - BVH
@@ -89,8 +101,11 @@ topics:
     includes:
       - Explicit Euler Method
   # Cameras: Sensors, lenses, light-field
-  camera__lenses:
-    name: Camera & Lenses
+  camera:
+    name: Camera
+    pass: true
+  camera__lenses_photography:
+    name: Lenses & Photography
     includes:
       - Exposure
       - Aperture (F-Stop)
@@ -112,6 +127,9 @@ topics:
       - Color Spaces
       - Chromaticity Diagram
   # Images: Encoding, processing
+  image:
+    name: Image
+    pass: true
   image__representation:
     name: Image Representation
     includes:
@@ -323,7 +341,7 @@ resources:
       - rendering__ray_tracing
       - rendering__global_illumination
       - rendering__material_modeling
-      - camera__lenses
+      - camera__lenses_photography
       - camera__sensors
       - camera__light_field
       - color
@@ -429,7 +447,7 @@ resources:
       - Varsha Ramakrishnan
     semester: sp19
     topics:
-      - camera__lenses
+      - camera__lenses_photography
       - camera__light_field
   - name: Varsha's Discussion 12
     link: https://docs.google.com/presentation/d/1KIuA7TInmoXS-wlhb3NppnXj0sqAgaLoPk0fhO1AraE/edit
@@ -443,7 +461,7 @@ resources:
       - rendering__ray_tracing
       - rendering__global_illumination
       - rendering__material_modeling
-      - camera__lenses
+      - camera__lenses_photography
       - camera__light_field
       - camera__sensors
       - color
