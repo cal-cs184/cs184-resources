@@ -67,7 +67,7 @@
           },
           "semester": {
             "type": "string",
-            "pattern": "^[a-z]{2}[0-9]{2}$"
+            "pattern": "^(Spring|Fall|Summer) [0-9]{2}$"
           },
           "topics": {
             "type": "array",

@@ -173,7 +173,7 @@ topics:
     includes:
       - Foveated Rendering
 resources:
-  # Special topics slides from sp19
+  # Special topics slides from Spring 19
   - name: Mesh Simplification
     link: https://docs.google.com/presentation/d/1xwXSdGrWc0ctLZOnqYvlXIYqUaW5BwF6QX19s-qJeVY/edit
     type: slides
@@ -181,24 +181,24 @@ resources:
     authors:
       - Dorian Chan
       - Jose Chavez
-    semester: sp19
+    semester: Spring 19
     topics:
       - geometry__mesh__processing
   - name: Advanced Rendering
     link: https://docs.google.com/presentation/d/1ST3ZhU2cxibprH_KJdYcnWzOSAPAR71d573bXKSdPuY/edit
     type: slides
     event: special_topics
-    semester: sp19
+    semester: Spring 19
     topics:
       - rendering
-  # Dorian's discussion slides from sp19
+  # Dorian's discussion slides from Spring 19
   - name: Dorian's Discussion 1
     link: https://docs.google.com/presentation/d/1CC9L4xbRQMx8GxAMpcxZ2tiIi6VgpPmhsuET8C_vl6o/edit
     type: slides
     event: discussion
     authors:
       - Dorian Chan
-    semester: sp19
+    semester: Spring 19
     topics:
       - image__representation
       - rendering__rasterization
@@ -208,7 +208,7 @@ resources:
     event: discussion
     authors:
       - Dorian Chan
-    semester: sp19
+    semester: Spring 19
     topics:
       - signal__sampling
       - math__transforms
@@ -219,7 +219,7 @@ resources:
     event: discussion
     authors:
       - Dorian Chan
-    semester: sp19
+    semester: Spring 19
     topics:
       - geometry__splines__cubic_hermite
       - geometry__splines__bezier
@@ -229,7 +229,7 @@ resources:
     event: discussion
     authors:
       - Dorian Chan
-    semester: sp19
+    semester: Spring 19
     topics:
       - geometry__mesh__halfedge
       - geometry__mesh__processing__loop_subdivision
@@ -241,7 +241,7 @@ resources:
     event: discussion
     authors:
       - Dorian Chan
-    semester: sp19
+    semester: Spring 19
     topics:
       - rendering__ray_tracing__acceleration
       - rendering__radiometry_photometry
@@ -251,20 +251,20 @@ resources:
     event: discussion
     authors:
       - Dorian Chan
-    semester: sp19
+    semester: Spring 19
     topics:
       - animation
       - simulation
       - camera__sensors
       - color
-  # Jessie's discussion slides from sp19
+  # Jessie's discussion slides from Spring 19
   - name: Jessie's Discussion 1
     link: https://docs.google.com/presentation/d/1dNMNcNkm4VnRzgjkIGmAHpTNAFllL7e4vH9T7g4F6SQ/edit
     type: slides
     event: discussion
     authors:
       - Jessie Yang
-    semester: sp19
+    semester: Spring 19
     topics:
       - image__representation
   - name: Jessie's Discussion 2
@@ -273,7 +273,7 @@ resources:
     event: discussion
     authors:
       - Jessie Yang
-    semester: sp19
+    semester: Spring 19
     topics:
       - signal__sampling
       - math__transforms
@@ -284,7 +284,7 @@ resources:
     event: discussion
     authors:
       - Jessie Yang
-    semester: sp19
+    semester: Spring 19
     topics:
       - geometry__splines__cubic_hermite
       - geometry__splines__catmull_rom
@@ -295,7 +295,7 @@ resources:
     event: discussion
     authors:
       - Jessie Yang
-    semester: sp19
+    semester: Spring 19
     topics:
       - geometry__mesh__halfedge
       - geometry__mesh__processing__loop_subdivision
@@ -307,7 +307,7 @@ resources:
     event: discussion
     authors:
       - Jessie Yang
-    semester: sp19
+    semester: Spring 19
     topics:
       - rendering__ray_tracing
       - rendering__ray_tracing__acceleration
@@ -318,7 +318,7 @@ resources:
     event: discussion
     authors:
       - Jessie Yang
-    semester: sp19
+    semester: Spring 19
     topics:
       - math__stats
       - math__monte_carlo_integration
@@ -328,7 +328,7 @@ resources:
     event: discussion
     authors:
       - Jessie Yang
-    semester: sp19
+    semester: Spring 19
     topics:
       - rendering__ray_tracing
       - rendering__global_illumination
@@ -340,7 +340,7 @@ resources:
     event: discussion
     authors:
       - Jessie Yang
-    semester: sp19
+    semester: Spring 19
     topics:
       - rendering__rasterization
       - geometry__mesh__halfedge
@@ -353,7 +353,7 @@ resources:
     event: discussion
     authors:
       - Jessie Yang
-    semester: sp19
+    semester: Spring 19
     topics:
       - animation
       - simulation
@@ -365,7 +365,7 @@ resources:
     event: discussion
     authors:
       - Jessie Yang
-    semester: sp19
+    semester: Spring 19
     topics:
       - rendering__radiometry_photometry
       - rendering__ray_tracing
@@ -376,14 +376,14 @@ resources:
       - camera__light_field
       - color
       - image__representation
-  # Varsha's discussion slides from sp19
+  # Varsha's discussion slides from Spring 19
   - name: Varsha's Discussion 2
     link: https://docs.google.com/presentation/d/1t4NAEwJXtlg_kKN5JTiKcGAn62Z1kRv52t8WlR3uMV4/edit
     type: slides
     event: discussion
     authors:
       - Varsha Ramakrishnan
-    semester: sp19
+    semester: Spring 19
     topics:
       - signal__sampling
       - math__transforms
@@ -394,7 +394,7 @@ resources:
     event: discussion
     authors:
       - Varsha Ramakrishnan
-    semester: sp19
+    semester: Spring 19
     topics:
       - geometry__splines__cubic_hermite
       - geometry__splines__bezier
@@ -404,7 +404,7 @@ resources:
     event: discussion
     authors:
       - Varsha Ramakrishnan
-    semester: sp19
+    semester: Spring 19
     topics:
       - geometry__mesh__halfedge
       - geometry__mesh__processing__loop_subdivision
@@ -416,7 +416,7 @@ resources:
     event: discussion
     authors:
       - Varsha Ramakrishnan
-    semester: sp19
+    semester: Spring 19
     topics:
       - rendering__ray_tracing
       - rendering__ray_tracing__acceleration
@@ -427,7 +427,7 @@ resources:
     event: discussion
     authors:
       - Varsha Ramakrishnan
-    semester: sp19
+    semester: Spring 19
     topics:
       - math__monte_carlo_integration
       - math__stats
@@ -437,7 +437,7 @@ resources:
     event: discussion
     authors:
       - Varsha Ramakrishnan
-    semester: sp19
+    semester: Spring 19
     topics:
       - rendering__global_illumination
       - rendering__material_modeling
@@ -449,7 +449,7 @@ resources:
     event: discussion
     authors:
       - Varsha Ramakrishnan
-    semester: sp19
+    semester: Spring 19
     topics:
       - rendering__rasterization
       - geometry__splines__bezier
@@ -463,7 +463,7 @@ resources:
     event: discussion
     authors:
       - Varsha Ramakrishnan
-    semester: sp19
+    semester: Spring 19
     topics:
       - animation
       - simulation
@@ -475,7 +475,7 @@ resources:
     event: discussion
     authors:
       - Varsha Ramakrishnan
-    semester: sp19
+    semester: Spring 19
     topics:
       - camera__lenses_photography
       - camera__light_field
@@ -485,7 +485,7 @@ resources:
     event: discussion
     authors:
       - Varsha Ramakrishnan
-    semester: sp19
+    semester: Spring 19
     topics:
       - rendering__radiometry_photometry
       - rendering__ray_tracing
@@ -503,26 +503,26 @@ resources:
     event: n/a
     authors:
       - Dorian Chan
-    semester: sp19
+    semester: Spring 19
     topics:
       - image__representation
   # Seth's interactive demos
   - name: Point in Triangle Test & Barycentric Coordinates
-    link: https://berkeley.mintkit.net/sp19-tutoring/courses/cs-184/demos/point-testing/
+    link: https://berkeley.mintkit.net/Spring 19-tutoring/courses/cs-184/demos/point-testing/
     type: demo
     event: n/a
     authors:
       - Seth Lu
-    semester: sp19
+    semester: Spring 19
     topics:
       - rendering__rasterization
       - rendering__texture_mapping
   - name: Image Spatial & Frequency Domain
-    link: https://berkeley.mintkit.net/sp19-tutoring/courses/cs-184/demos/image-fourier/
+    link: https://berkeley.mintkit.net/Spring 19-tutoring/courses/cs-184/demos/image-fourier/
     type: demo
     event: n/a
     authors:
       - Seth Lu
-    semester: sp19
+    semester: Spring 19
     topics:
       - signal__spatial_frequency
