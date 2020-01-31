@@ -5,6 +5,9 @@ topics:
     pass: true
   math__transforms:
     name: Transforms
+    includes:
+      - Affine Transformation
+      - Transformation Matrix
   math__stats:
     name: Probability
     includes:
@@ -38,14 +41,20 @@ topics:
     pass: true
   geometry__mesh__halfedge:
     name: Half-Edge Data Structure
+    includes:
+      - Edge Flip
+      - Edge Split
   geometry__mesh__processing:
     name: Mesh Processing
+    includes:
+      - Mesh Simplification
   geometry__mesh__processing__loop_subdivision:
     name: Loop Subdivision
   geometry__mesh__processing__catmull_clark:
     name: Catmull-Clark Subdivision (Quad Mesh)
   geometry__splines:
     name: Splines
+    pass: true
   geometry__splines__cubic_hermite:
     name: Cubic Hermite Interpolation
     includes:
@@ -57,13 +66,21 @@ topics:
     includes:
       - Bézier Surfaces
       - De Casteljau's Algorithm
+      - Bernstein Polynomial
   # Rendering: Pipeline, rasterization, texture mapping, etc.
   rendering:
     name: Rendering
+    includes:
+      - Rendering Techniques
   rendering__pipeline:
     name: Graphics Pipeline
+    includes:
+      - Fixed Function Pipeline
+      - Shaders
   rendering__rasterization:
     name: Rasterization
+    includes:
+      - Point in Triangle Test
   rendering__texture_mapping:
     name: Texture Mapping
     includes:
@@ -86,8 +103,14 @@ topics:
       - Indirect Illumination
   rendering__radiometry_photometry:
     name: Radiometry & Photometry
+    includes:
+      - Irradiance
+      - Radiance
   rendering__material_modeling:
     name: Material Modeling
+    includes:
+      - Bidirectional Reflectance Distribution Function (BRDF)
+      - Bidirectional Scattering Distribution Function (BSDF)
   # Animation
   animation:
     name: Animation
@@ -134,14 +157,21 @@ topics:
     name: Image Representation
     includes:
       - Image Encoding
+      - JPEG
   image__processing:
     name: Digital Image Processing
+    includes:
+      - Quantization Matrix
   # High performance computing: GPUs
   hpc:
     name: High Performance Computing
+    includes:
+      - Graphics Processing Unit (GPU)
   # AR/VR
   arvr:
     name: Augmented & Virtual Reality
+    includes:
+      - Foveated Rendering
 resources:
   # Special topics slides from sp19
   - name: Mesh Simplification
