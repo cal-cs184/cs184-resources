@@ -8,7 +8,8 @@
     "js-yaml": "^3.13.1"
   },
   "scripts": {
-    "test": "node test/validate.js resources.yml schema.json"
+    "test": "node test/validate.js resources.yml schema.json",
+    "dev-serve": "cd docs && bundle exec jekyll serve --trace"
   },
   "author": "",
   "license": "ISC"
