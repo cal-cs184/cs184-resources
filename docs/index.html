@@ -5,17 +5,24 @@ layout: default
 <div class="wrapper">
     <h2>CS184 Resources</h2>
     <div class="search">
-        <input type="text" id="search-input" autocapitalize="off" autocomplete="off" placeholder="Search Topics...">
+        <div id="search-inputbox">
+            <input type="text" id="search-input" autocapitalize="off" autocomplete="off" placeholder="Search Topics...">
+            <ul id="search-input-topics" class="topics">
+                {% for topic in site.data.resources.topics %}
+                    <li class="topic" data-topic="{{ topic[0] }}">
+                        <div>{{ topic[1].name }}</div>
+                        {% if topic[1].includes %}
+                            <div class="includes">
+                                {{ topic[1].includes | array_to_sentence_string: "and" }}
+                            </div>
+                        {% endif %}
+                    </li>
+                {% endfor %}
+            </ul>
+        </div>
         <ul id="search-topics" class="topics">
             {% for topic in site.data.resources.topics %}
-                <li class="topic" data-topic="{{ topic[0] }}">
-                    <div>{{ topic[1].name }}</div>
-                    {% if topic[1].includes %}
-                        <div class="includes">
-                            {{ topic[1].includes | array_to_sentence_string: "and" }}
-                        </div>
-                    {% endif %}
-                </li>
+                <li class="topic" data-topic="{{ topic[0] }}">{{ topic[1].name }}</li>
             {% endfor %}
         </ul>
     </div>
@@ -43,8 +50,12 @@ layout: default
 
         const topics = JSON.parse(decodeURIComponent("{{ site.data.resources.topics | jsonify | uri_escape  }}"));
 
+        const searchInputBoxElem = document.getElementById("search-inputbox");
         const searchInputElem = document.getElementById("search-input");
-        const searchTopicsContainerElem = document.getElementById("search-topics");
+        const searchInputTopicsContainerElem = document.getElementById("search-input-topics");
+        
+        const searchTopicsContaineerElem = document.getElementById("search-topics");
+        
         const resourcesContainerElem = document.getElementById("resources");
 
         const selectedTopics = new Set();
@@ -52,49 +63,60 @@ layout: default
 
         function refreshResources() {
             const allMatched = selectedTopics.size == 0; // If no topic is selected, then show all resources
+            let someContainsSelectedTopics = false;
             for (let resourceElem of resourcesContainerElem.children) {
+                
                 let containsSelectedTopics = allMatched;
-
                 for (let topicElem of resourceElem.getElementsByClassName("topic")) {
                     const topicMatched = allMatched || selectedTopics.has(topicElem.dataset.topic);
                     topicElem.classList.toggle("matched", topicMatched);
                     containsSelectedTopics |= topicMatched;
                 }
+
+                someContainsSelectedTopics |= containsSelectedTopics;
                 resourceElem.classList.toggle("matched", containsSelectedTopics);
+
             }
+            resourcesContainerElem.classList.toggle("none-matched", !someContainsSelectedTopics);
+        }
+
+        function refreshTopicElems(topicsContainerElem) {
+            let anySelected = false;
+            for (let topicElem of topicsContainerElem.children) {
+                const selected = selectedTopics.has(topicElem.dataset.topic);
+                anySelected |= selected;
+                topicElem.classList.toggle("selected", selected);
+            }
+            topicsContainerElem.classList.toggle("none-selected", !anySelected);
         }
 
         function topicElemOnClick() {
             const key = this.dataset.topic;
             if (selectedTopics.has(key)) {
+                // From input topics list or search topics list
                 selectedTopics.delete(key);
-                this.classList.toggle("selected", false);
+                refreshTopicElems(searchInputTopicsContainerElem);
+                refreshTopicElems(searchTopicsContaineerElem);
             } else {
+                // Can only be from input topics list
                 selectedTopics.add(key);
-                this.classList.toggle("selected", true);
+                refreshTopicElems(searchInputTopicsContainerElem);
+                refreshTopicElems(searchTopicsContaineerElem);
+
                 searchInputElem.value = "";
-                searchInputElemOnInput.apply(searchInputElem); // Manual trigger
+                searchInputElemOnInput.apply(searchInputElem); // Simulate input
             }
 
             refreshResources();
         }
 
         function searchInputElemOnFocus() {
-            if (!queryWords) {
-                for (let topicElem of searchTopicsContainerElem.children) {
-                    topicElem.classList.toggle("matched", true);
-                }
-                searchTopicsContainerElem.classList.toggle("mode-search", true);
-            }
+            searchInputBoxElem.classList.toggle("active", true);
+            searchInputElemOnInput.apply(searchInputElem); // Simulate input
         }
 
         function searchInputElemOnBlur() {
-            if (!queryWords) {
-                searchTopicsContainerElem.classList.toggle("mode-search", false);
-                for (let topicElem of searchTopicsContainerElem.children) {
-                    topicElem.classList.toggle("matched", false);
-                }
-            }
+            searchInputBoxElem.classList.toggle("active", false);
         }
 
         function searchInputElemOnInput() {
@@ -128,9 +150,13 @@ layout: default
             // Show the filtered topics
 
             const allMatched = !queryWords;
-            for (let topicElem of searchTopicsContainerElem.children) {
-                topicElem.classList.toggle("matched", allMatched || potentialTopics.has(topicElem.dataset.topic));
+            let someMatched = false;
+            for (let topicElem of searchInputTopicsContainerElem.children) {
+                const matched = allMatched || potentialTopics.has(topicElem.dataset.topic);
+                someMatched |= matched;
+                topicElem.classList.toggle("matched", matched);
             }
+            searchInputTopicsContainerElem.classList.toggle("none-matched", !someMatched);
 
         }
 
@@ -139,10 +165,15 @@ layout: default
         searchInputElem.addEventListener("input", searchInputElemOnInput);
         searchInputElem.addEventListener("focus", searchInputElemOnFocus);
         searchInputElem.addEventListener("blur", searchInputElemOnBlur);
-        for (let topicElem of searchTopicsContainerElem.getElementsByClassName("topic")) {
+        for (let topicElem of searchInputTopicsContainerElem.children) {
+            topicElem.addEventListener("mousedown", topicElemOnClick);
+        }
+        for (let topicElem of searchTopicsContaineerElem.children) {
             topicElem.addEventListener("mousedown", topicElemOnClick);
         }
 
+        refreshTopicElems(searchInputTopicsContainerElem);
+        refreshTopicElems(searchTopicsContaineerElem);
         refreshResources();
 
     });
