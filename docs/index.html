@@ -41,18 +41,22 @@ layout: default
     </div>
     <div id="resources" class="resources">
         {% for resource in site.data.resources.resources %}
-            <a class="resource" href="{{ resource.link }}" target="_blank">
-                <h3>{{ resource.name }}</h3>
-                {% if resource.authors %}
-                    <p>Author(s): {{ resource.authors | array_to_sentence_string: "and" }}</p>
-                {% endif %}
-                {% if resource.topics %}
-                    <ul class="topics">
-                        {% for topic_key in resource.topics %}
-                            <li class="topic" data-topic="{{ topic_key }}">{{ site.data.resources.topics[topic_key].name }}</li>
-                        {% endfor %}
-                    </ul>
-                {% endif %}
+            <a class="resource" href="{{ resource.link }}" target="_blank" data-type="{{ resource.type }}">
+                <div class="type-icon"></div>
+                <div>
+                    <h3>{{ resource.name }}</h3>
+                    {% if resource.authors %}
+                        <p>Author{% if resource.authors.size > 1 %}s{% endif %}: {{ resource.authors | array_to_sentence_string: "and" }}</p>
+                    {% endif %}
+                    {% if resource.semester %}<p>Semester: {{ resource.semester }}</p>{% endif %}
+                    {% if resource.topics %}
+                        <ul class="topics">
+                            {% for topic_key in resource.topics %}
+                                <li class="topic" data-topic="{{ topic_key }}">{{ site.data.resources.topics[topic_key].name }}</li>
+                            {% endfor %}
+                        </ul>
+                    {% endif %}
+                </div>
             </a>
         {% endfor %}
     </div>
