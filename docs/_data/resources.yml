@@ -508,7 +508,7 @@ resources:
       - image__representation
   # Seth's interactive demos
   - name: Point in Triangle Test & Barycentric Coordinates
-    link: https://berkeley.mintkit.net/Spring 19-tutoring/courses/cs-184/demos/point-testing/
+    link: https://berkeley.mintkit.net/sp19-tutoring/courses/cs-184/demos/point-testing/
     type: demo
     event: n/a
     authors:
@@ -518,7 +518,7 @@ resources:
       - rendering__rasterization
       - rendering__texture_mapping
   - name: Image Spatial & Frequency Domain
-    link: https://berkeley.mintkit.net/Spring 19-tutoring/courses/cs-184/demos/image-fourier/
+    link: https://berkeley.mintkit.net/sp19-tutoring/courses/cs-184/demos/image-fourier/
     type: demo
     event: n/a
     authors:
