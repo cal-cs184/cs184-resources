@@ -526,3 +526,12 @@ resources:
     semester: Spring 19
     topics:
       - signal__spatial_frequency
+  - name: Radiometry
+    link: https://berkeley.mintkit.net/sp19-tutoring/courses/cs-184/appendices/radiometry.html
+    type: document
+    event: n/a
+    authors:
+      - Seth Lu
+    semester: Spring 19
+    topics:
+      - rendering__radiometry_photometry
