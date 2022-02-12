@@ -4,7 +4,7 @@
   "description": "",
   "dependencies": {},
   "devDependencies": {
-    "ajv": "^6.11.0",
+    "ajv": "^6.12.3",
     "js-yaml": "^3.13.1"
   },
   "scripts": {
